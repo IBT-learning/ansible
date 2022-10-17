@@ -1,6 +1,6 @@
 ---
-- name: install and configure mariadb
-  hosts: testserver
+- name: install and configure tomcat
+  hosts: testServers
   remote_user: vagrant
   become: yes
 
