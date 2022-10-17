@@ -1,0 +1,14 @@
+# this is comment
+
+[testServer]
+192.168.1.118
+test.server.com
+test.server2.com
+
+[webServers]
+apache[10:50].server.com
+nginx[01:100].server.com
+
+[appServers]
+app[a:z].server.com
+
