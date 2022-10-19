@@ -1,6 +1,7 @@
 # This is comment
 
 # Key value
+occupation: DevOps
 Name: Jashan
 Organisation: IBT
 
@@ -13,6 +14,6 @@ animals:
 
 # other way of lists
 
-animals: ['tiger', 'monkey', 'gorilla', 'dog']
+animals2: ['tiger', 'monkey', 'gorilla', 'dog']
 
-animals: "{{MyAnimal}}"
+animal: "{{MyAnimal}}"
