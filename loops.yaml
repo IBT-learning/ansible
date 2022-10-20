@@ -1,0 +1,15 @@
+
+- name: Test loops
+  hosts: testServer2
+  remote_user: vagrant
+  become: yes
+
+  tasks:
+    - name: Create new users
+      user:
+        name: '{{ item }}'
+        state: present
+      loop:
+        - john
+        - mike
+        - andrew

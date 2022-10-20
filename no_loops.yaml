@@ -1,0 +1,20 @@
+- name: Test loops
+  hosts: testServer1
+  remote_user: vagrant
+  become: yes
+
+  tasks:
+    - name: Create new user john
+      user:
+        name: john
+        state: present
+
+    - name: Create new user mike
+      user:
+        name: mike
+        state: present
+
+    - name: Create new user andrew
+      user:
+        name: andrew
+        state: present
