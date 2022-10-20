@@ -3,7 +3,9 @@
   hosts: testServers
   remote_user: vagrant
   become: yes
-
+ 
+  vars:
+    tomcat_path="/opt/tomcat10"
 
   tasks:
     - name: Update the System Packages
@@ -27,7 +29,7 @@
 
     - name: Create a Tomcat Directory
       file:
-        path: /opt/tomcat10
+        path: {{tomcat_path}}
         owner: tomcat
         group: tomcat
         mode: 755
