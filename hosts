@@ -1,14 +1,13 @@
-# this is comment
+# This is a comment
 
-[testServer]
+[testServers]
 192.168.1.118
+192.168.1.119
 test.server.com
-test.server2.com
 
-[webServers]
-apache[10:50].server.com
-nginx[01:100].server.com
+[webservers]
+apache[01:04].server.com
+nginx[10:200].server.com
 
-[appServers]
+[appservers]
 app[a:z].server.com
-
