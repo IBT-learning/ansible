@@ -1,0 +1,10 @@
+---
+- name: Get the registered date
+  hosts: testServers
+  remote_user: vagrant
+
+  tasks:
+  - name: get the date output
+    shell: date
+    register: output
+  - debug: msg="the date is {{output.stdout}}"

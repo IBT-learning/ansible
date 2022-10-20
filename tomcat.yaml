@@ -1,12 +1,15 @@
 ---
 - name: install and configure tomcat
-  hosts: testServers
+  #hosts: testServers
+  hosts: "{{myHosts}}"
   remote_user: vagrant
   become: yes
  
+  
   vars:
-    tomcat_path="/opt/tomcat10"
-
+    tomcat_path: "opt/tomcat10"
+  #vars_files: 
+   # - tomcat_vars.yaml
   tasks:
     - name: Update the System Packages
       apt:
@@ -29,7 +32,7 @@
 
     - name: Create a Tomcat Directory
       file:
-        path: {{tomcat_path}}
+        path: "{{tomcat_path}}"
         owner: tomcat
         group: tomcat
         mode: 755
