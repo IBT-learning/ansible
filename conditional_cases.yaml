@@ -1,36 +1,29 @@
 ---
 - name: Test condition
-  hosts: testServers
-  remote_user: vagrant
-  become: yes
- 
+  hosts: tomcatServers
+  remote_user: root
+
   vars:
-    vm1: "192.168.1.118"
-    vm2: "192.168.119"
+    # string
+    vm1: "68.183.51.116"
+    vm2: "137.184.76.77"
+    #boolean
     run_task: true
 
   tasks:
-  - name: Run task on VM1
-    command: ifconfig
-    register: output
-    when: ansible_all_ipv4_addresses[1]==vm1
-    
-  - debug: msg="output is {{output}}" 
-  
-  - name: will this task run or not
-    when: not run_task
-    shell: echo "If I echo I am runnig else not"
-   
-  #- fail: msg="mytask needs my_task varibles to set"
-  #  when: my_task is undefined  
-   
-  - name: checking systemd logs
-    shell: /var/log/syslog
-    register: log_output
+#  - debug: msg="output is {{ansible_all_ipv4_addresses}}"
+#  - name: Run task on VM1
+#    command: ifconfig
+#    register: output
+#    when: ansible_all_ipv4_addresses[1]==vm1
+#  - debug: msg="The Output is {{output}}"
+#
+#  - name: will this task run or not
+#    when: run_task and ansible_all_ipv4_addresses[1]==vm1
+#    shell: echo "Hey, I am running else not"
+#    register: output
+#  - debug: msg="{{output.changed}}"
 
-  - name: print systemlog
-    shell: echo "when we are doing ansible"
-    when: log_output.stdout.find('ansible') != 0
-    register: shell_echo
+#  - fail: msg="mytask needs my_task varibles to set"
+#    when: my_task is undefined
 
-  - debug: var=shell_echo
