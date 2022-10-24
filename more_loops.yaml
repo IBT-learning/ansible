@@ -1,21 +1,29 @@
-- name: testing loops
-  hosts: testServer1
-  remote_user: vagrant
+- name: Test loops
+  hosts: tomcatServers
+  remote_user: root
   become: yes
+  vars:
+    item:
+    - vim
+    - screen
+    - rsync
 
   tasks:
 
-   - name: looping over environment facts
-     debug: msg="{{item. key}}={{item. value}}"
-     with_dict: ansible_env
+#    - name: basic packages
+#      apt:
+#        name: "{{ item }}"
+#        state: present
+#        loop:
+#          - vim
+#          - screen
+#          - rsync
 
-   - name: looping over files and then copy
-     copy: src="{{item}}" dest="/tmp/loops"
-     with_fileglob: "/tmp/*.conf"
+    - name: basic packages
+      apt:
+        name:
+          - vim
+          - screen
+          - rsync
+        state: present
 
-   - name: do until something
-     shell: echo hello
-     register: output
-     retries: 5
-     delay: 5
-     until: output.stdout.find('hello') != -1

@@ -1,7 +1,9 @@
 # understanding adhoc command
 
-[testServer1]
+[testServers]
 192.168.1.118
-
-[testServer2]
 192.168.1.119
+
+[tomcatServers]
+68.183.51.116
+137.184.76.77

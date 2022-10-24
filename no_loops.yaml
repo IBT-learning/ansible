@@ -1,20 +1,27 @@
 - name: Test loops
-  hosts: testServer1
-  remote_user: vagrant
+  hosts: tomcatServers
+  remote_user: root
   become: yes
+
+  vars:
+    password: "user123"
 
   tasks:
     - name: Create new user john
       user:
-        name: john
+        name: amza
         state: present
-
+        update_password: always
+        password: "{{ password }}"
     - name: Create new user mike
       user:
-        name: mike
+        name: oghenkero
         state: present
-
+        update_password: always
+        password: "{{ password }}"
     - name: Create new user andrew
       user:
         name: andrew
         state: present
+        update_password: always
+        password: "{{ password }}"

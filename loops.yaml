@@ -1,7 +1,6 @@
-
 - name: Test loops
-  hosts: testServer2
-  remote_user: vagrant
+  hosts: tomcatServers
+  remote_user: root
   become: yes
 
   tasks:
@@ -13,3 +12,5 @@
         - john
         - mike
         - andrew
+      loop_control:
+        pause: 2
