@@ -3,7 +3,12 @@ pipeline {
     stages {
         stage('Test ansible version') {
             steps {
-                sh 'ansible --verions'
+               ansiblePlaybook( 
+                    playbook: 'tomcat.yaml',
+                    inventory: 'hosts', 
+                    credentialsId: 'vm-ssh',
+                    colorized: true) 
+                }
             }
         }
     }
