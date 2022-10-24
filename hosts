@@ -1,0 +1,9 @@
+# understanding adhoc command
+
+[testServers]
+192.168.1.118
+192.168.1.119
+
+[tomcatServers]
+68.183.51.116
+137.184.76.77

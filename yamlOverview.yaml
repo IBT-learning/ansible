@@ -1,0 +1,18 @@
+# This is comment
+
+# Key value
+Name: Jashan
+Organisation: IBT
+
+# lists
+animals:
+  - tiger
+  - monkey
+  - gorilla
+  - dog
+
+# other way of lists
+
+animals: ['tiger', 'monkey', 'gorilla', 'dog']
+
+animals: "{{MyAnimal}}"
