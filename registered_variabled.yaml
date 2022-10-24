@@ -1,0 +1,15 @@
+---
+- name: Get the registered date
+  hosts: tomcatServers
+  remote_user: root
+
+  tasks:
+    - name: get the date output
+      shell: date
+      register: output
+    - debug: msg="the date is {{output.stdout}}"
+
+    - name: get the uname
+      command: "uname -a"
+      register: unameout
+    - debug: msg="the date is {{unameout.stdout_lines}}"

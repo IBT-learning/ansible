@@ -1,15 +1,13 @@
 ---
 - name: install and configure tomcat
-  #hosts: testServers
+#  hosts: testServers
   hosts: "{{myHosts}}"
-  remote_user: vagrant
+  remote_user: root
   become: yes
- 
-  
+
   vars:
-    tomcat_path: "opt/tomcat10"
-  #vars_files: 
-   # - tomcat_vars.yaml
+    tomcat_path: "/opt/tomcat10"
+
   tasks:
     - name: Update the System Packages
       apt:
@@ -26,13 +24,13 @@
 
     - name: Install JAVA
       apt:
-        name: default-jdk
+        name: openjdk-11-jdk
         state: present
 
 
     - name: Create a Tomcat Directory
       file:
-        path: "{{tomcat_path}}"
+        path: "{{ tomcat_path }}"
         owner: tomcat
         group: tomcat
         mode: 755
@@ -63,5 +61,6 @@
     - name: Start and Enable Tomcat 10 on sever
       systemd:
         name: tomcat
+        enabled: yes
         state: started
         daemon_reload: true

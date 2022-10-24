@@ -1,10 +1,13 @@
 ---
-- name: Get the registered date
-  hosts: testServers
-  remote_user: vagrant
+- name: Get User info
+  hosts: tomcatServers
+  remote_user: root
+  vars:
+    name: "jashan"
+  vars_files:
+    - my_vars.yaml
 
   tasks:
-  - name: get the date output
-    shell: date
-    register: output
-  - debug: msg="the date is {{output.stdout}}"
+
+  - debug: msg="My name is {{name}}"
+  - debug: msg="My occupation is {{occupation}}"
