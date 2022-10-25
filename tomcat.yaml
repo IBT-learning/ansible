@@ -1,12 +1,14 @@
 ---
 - name: install and configure tomcat
-#  hosts: testServers
+#  hosts: tomcatServers
   hosts: "{{myHosts}}"
   remote_user: root
   become: yes
 
-  vars:
-    tomcat_path: "/opt/tomcat10"
+#  vars:
+#    tomcat_path: "/opt/tomcat10"
+  vars_files:
+    - my_vars.yaml
 
   tasks:
     - name: Update the System Packages
@@ -39,13 +41,13 @@
     - name: download & unarchive tomcat10
       unarchive:
         src: https://dlcdn.apache.org/tomcat/tomcat-8/v8.5.83/bin/apache-tomcat-8.5.83.tar.gz
-        dest: /opt/tomcat10
+        dest: "{{ tomcat_path }}"
         remote_src: yes
         extra_opts: [--strip-components=1]
 
     - name: Change ownership of tomcat directory
       file:
-        path: /opt/tomcat10
+        path: "{{ tomcat_path }}"
         owner: tomcat
         group: tomcat
         mode: "u+rwx,g+rx,o=rx"

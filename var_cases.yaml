@@ -2,8 +2,8 @@
 - name: Get User info
   hosts: tomcatServers
   remote_user: root
-  vars:
-    name: "jashan"
+
+
   vars_files:
     - my_vars.yaml
 

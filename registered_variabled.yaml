@@ -12,4 +12,4 @@
     - name: get the uname
       command: "uname -a"
       register: unameout
-    - debug: msg="the date is {{unameout.stdout_lines}}"
+    - debug: msg="the uname is {{unameout.stdout_lines}}"
