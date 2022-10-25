@@ -1,0 +1,21 @@
+---
+- name: Test filters
+#  hosts: "{{tomcat_hosts | default('tomcatServers')}}"
+  hosts: tomcatServers
+  remote_user: root
+  become: yes
+
+  tasks:
+  - name: install nginx
+    apt: pkg=nginx state=latest update_cache=true
+    notify:
+      - start nginx
+
+  - name: install nginx
+    copy: src=test.txt dest=/tmp/test.txt
+    notify:
+      - start nginx
+
+  handlers:
+    - name: start nginx
+      service: name=nginx state=started
