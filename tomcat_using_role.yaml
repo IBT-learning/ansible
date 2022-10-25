@@ -1,0 +1,14 @@
+---
+- name: install and configure tomcat
+  hosts: "tomcatServers"
+  remote_user: root
+  become: yes
+
+
+  roles:
+  - tomcat
+
+#  tasks:
+#  - name: my_role
+#    include_role:
+#      name: tomcat
