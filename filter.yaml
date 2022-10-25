@@ -11,12 +11,29 @@
     pizza_toppings: ['mozzarella', 'anchovies', 'pineapple', 'bleu', 'pepperoni', 'mushrooms']
     
   tasks:
-  - name: quick echo
-    shell: echo $PATH
+#  - name: quick echo
+#    shell: echo $PATH
+#    register: result
+#
+#  - debug: msg="{{cheese | unique}}"
+#
+#  - debug: msg="{{cheese | difference(pizza_toppings)}}"
+#
+#  - debug: msg="{{cheese | union(pizza_toppings)}}"
+#
+  - shell: /usr/bin/foo
     register: result
+    ignore_errors: True
 
-  - debug: msg="{{cheese | unique}}"
+  - debug: msg="it failed"
+    when: result is failed
 
-  - debug: msg="{{cheese | difference(pizza_toppings)}}"
+  # in most cases you'll want a handler, but if you want to do something right now, this is nice
+  - debug: msg="it changed"
+    when: result is changed
 
-  - debug: msg="{{cheese | union(pizza_toppings)}}"
+  - debug: msg="it succeeded"
+    when: result is success
+
+  - debug: msg="it was skipped"
+    when: result is skipped
