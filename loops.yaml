@@ -9,8 +9,10 @@
         name: '{{ item }}'
         state: present
       loop:
-        - john
-        - mike
-        - andrew
-      loop_control:
-        pause: 2
+        - amza
+        - oghenekaro
+        - Don
+        - francis
+        - blaise
+#      loop_control:
+#        pause: 3

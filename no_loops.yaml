@@ -15,13 +15,13 @@
         password: "{{ password }}"
     - name: Create new user mike
       user:
-        name: oghenkero
+        name: oghenekaro
         state: present
         update_password: always
         password: "{{ password }}"
     - name: Create new user andrew
       user:
-        name: andrew
+        name: Don
         state: present
         update_password: always
         password: "{{ password }}"
