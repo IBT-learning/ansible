@@ -1,5 +1,5 @@
 ---
-- name: Test filters
+- name: Test handler
 #  hosts: "{{tomcat_hosts | default('tomcatServers')}}"
   hosts: tomcatServers
   remote_user: root
@@ -18,4 +18,4 @@
 
   handlers:
     - name: start nginx
-      service: name=nginx state=started
+      service: name=nginx state=stopped
