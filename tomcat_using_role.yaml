@@ -5,10 +5,10 @@
   become: yes
 
 
-  roles:
-  - tomcat
+#  roles:
+#  - tomcat
 
-#  tasks:
-#  - name: my_role
-#    include_role:
-#      name: tomcat
+  tasks:
+  - name: my_role
+    include_role:
+      name: tomcat
