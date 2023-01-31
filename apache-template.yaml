@@ -1,0 +1,45 @@
+---
+ - name: Playbook
+   hosts: jenkins_server
+   vars:
+     http_port: 8081
+     admin: ansible-devops
+     content_dir: /webcontent
+   tasks:
+    - name: Ensure apache is of latest version
+      become: yes
+      yum:
+        name: httpd
+        state: latest
+    - name: Create Group for Webcontent
+      become: yes
+      group:
+        name: webcontent
+        state: present
+    - name: Create Webcontent Dir
+      become: yes
+      file:
+        path: /webcontent
+        state: directory
+        group: webcontent
+        owner: ec2-user
+        mode: '2775'
+    - name: push config template
+      become: yes
+      template:
+        src: /home/ec2-user/session3/jinja_sample/httpd.conf.j2
+        dest: /etc/httpd/conf/httpd.conf
+        backup: true
+      notify: "restart apache"
+    - name: push index.html template
+      become: yes
+      template:
+        src: /home/ec2-user/session3/jinja_sample/index.html.j2
+        dest: /webcontent/index.html
+      notify: "restart apache"
+   handlers:
+    - name: restart apache
+      become: yes
+      ansible.builtin.service:
+        name: httpd
+        state: restarted
