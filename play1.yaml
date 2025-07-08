@@ -1,0 +1,24 @@
+---
+- name: Play 1
+  hosts: localhost
+
+  tasks:
+    - name: helloworld
+      shell: echo "hello world"
+
+    - name: hi
+      shell: echo "hi"
+
+    - name: date
+      command: date
+
+    - name: run a script
+      script: test.sh
+
+    - name: display contents of the file
+      command: cat resolv.conf chdir=/etc
+
+    - name: add line in file
+      lineinfile:
+          path: test.sh
+          line: 'day - 5th May'
