@@ -1,0 +1,32 @@
+---
+- name: loops
+  hosts: localhost
+
+  vars:
+    software:
+      - name: python
+        required: true
+      - name: maven
+        required: true
+      - name: java
+        required: false
+      - name: tomcat
+        required: true
+      - name: ngnix
+        required: false
+
+  tasks:
+    - name: install {{ item }}
+      command: echo "installing {{ item }}"
+      when: item.required==true
+      loop: "{{ software }}"
+
+    - name: create "{{ item }}"
+      command: echo "creating {{ item }}"
+      loop:
+        - gunjan
+        - anya
+        - uo
+        - taiwo
+        - claudia
+        - nnamdi
